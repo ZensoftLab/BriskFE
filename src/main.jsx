@@ -88,6 +88,22 @@ function SitePage({ page }) {
 
     const body = source.body;
     body.querySelectorAll("script, noscript").forEach((node) => node.remove());
+
+    if (page === "Main") {
+      const heroImage = body.querySelector(".reference-hero img");
+      if (heroImage) {
+        heroImage.loading = "eager";
+        heroImage.decoding = "async";
+        heroImage.fetchPriority = "high";
+      }
+    }
+
+    body.querySelectorAll("img").forEach((img) => {
+      if (!img.hasAttribute("loading")) {
+        img.loading = "lazy";
+      }
+    });
+
     for (const element of body.querySelectorAll("*")) {
       for (const attribute of [
         "src",
@@ -139,7 +155,8 @@ function SitePage({ page }) {
       const slider = body.querySelector("#rev_slider_2_1_wrapper");
       if (slider) {
         slider.style.visibility = "visible";
-        slider.style.height = "700px";
+        slider.style.height = "auto";
+        slider.style.minHeight = "0";
         slider.style.display = "block";
         slider.innerHTML = `<div class="reference-hero"><img src="${heroImages[0]}" alt="Brisk Internet broadband service" loading="eager" fetchpriority="high" decoding="async" /></div>`;
       }
