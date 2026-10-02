@@ -1,0 +1,73 @@
+@import "tailwindcss/utilities.css" layer(utilities);
+
+.reference-hero {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.reference-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.demo-page.is-loading {
+  visibility: hidden;
+}
+
+.site-branding .site-title {
+  font-size: 24px !important;
+}
+
+.demo-page-package-form .elementor-8726 .elementor-icon-list-item a,
+.demo-page-package-form .elementor-8726 .elementor-icon-list-icon,
+.demo-page-package-form .elementor-8726 .elementor-icon-list-text {
+  color: #fff !important;
+}
+
+.demo-page-package-form .elementor-element-96d4fa4 .elementor-icon-list-item {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 24px;
+}
+
+.demo-page-package-form .elementor-element-96d4fa4 .elementor-icon-list-item a {
+  align-items: center;
+  min-height: 41px;
+  line-height: 41px;
+}
+
+.demo-page-package-form
+  .elementor-element-3c9afa1
+  > .elementor-element-populated {
+  min-height: 464px;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+}
+
+.demo-page-package-form
+  .elementor-element-96d4fa4
+  > .elementor-widget-container {
+  margin-top: 18px !important;
+}
+
+.demo-page .elementor-section-stretched {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+@media (max-width: 1024px) {
+  .reference-hero {
+    height: 500px;
+  }
+}
+
+@media (max-width: 767px) {
+  .reference-hero {
+    height: 320px;
+  }
+}
