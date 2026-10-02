@@ -172,6 +172,268 @@ function SitePage({ page }) {
   }, [page, heroIndex, markup]);
 
   useEffect(() => {
+    if (page !== "Main" || !markup) return undefined;
+    const carousel = document.querySelector(
+      ".demo-page-Main .ekommart-carousel",
+    );
+    if (!carousel) return undefined;
+
+    const originalItems = Array.from(
+      carousel.querySelectorAll(".elementor-brand-item"),
+    );
+    if (!originalItems.length) return undefined;
+
+    const totalOriginal = originalItems.length;
+
+    const slickList = document.createElement("div");
+    slickList.className = "slick-list draggable";
+
+    const slickTrack = document.createElement("div");
+    slickTrack.className = "slick-track";
+
+    const cloneBefore = originalItems.map((item, idx) => {
+      const clone = item.cloneNode(true);
+      clone.classList.add("slick-slide", "slick-cloned");
+      clone.dataset.slickIndex = String(-totalOriginal + idx);
+      return clone;
+    });
+
+    const realSlides = originalItems.map((item, idx) => {
+      item.classList.add("slick-slide");
+      item.dataset.slickIndex = String(idx);
+      return item;
+    });
+
+    const cloneAfter = originalItems.map((item, idx) => {
+      const clone = item.cloneNode(true);
+      clone.classList.add("slick-slide", "slick-cloned");
+      clone.dataset.slickIndex = String(totalOriginal + idx);
+      return clone;
+    });
+
+    carousel.innerHTML = "";
+    slickTrack.append(...cloneBefore, ...realSlides, ...cloneAfter);
+    slickList.append(slickTrack);
+    carousel.append(slickList);
+
+    const dotsUl = document.createElement("ul");
+    dotsUl.className = "slick-dots";
+    dotsUl.setAttribute("role", "tablist");
+
+    const dotItems = [];
+    for (let i = 0; i < totalOriginal; i += 1) {
+      const li = document.createElement("li");
+      li.setAttribute("role", "presentation");
+      if (i === 0) li.classList.add("slick-active");
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.setAttribute("role", "tab");
+      btn.textContent = String(i + 1);
+
+      li.append(btn);
+      dotsUl.append(li);
+      dotItems.push(li);
+    }
+    carousel.append(dotsUl);
+
+    carousel.classList.add("slick-initialized", "slick-slider", "slick-dotted");
+
+    let virtualIndex = totalOriginal;
+    let isTransitioning = false;
+    let autoplayTimer = null;
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslateX = 0;
+    let dragOffset = 0;
+    let hasDragged = false;
+
+    const allSlides = Array.from(slickTrack.children);
+
+    const getVisibleCount = () => {
+      const width = window.innerWidth;
+      if (width <= 768) return 2;
+      if (width <= 1024) return 3;
+      return 5;
+    };
+
+    const getSlideWidth = () => {
+      const listWidth =
+        slickList.getBoundingClientRect().width ||
+        carousel.getBoundingClientRect().width ||
+        1200;
+      return listWidth / getVisibleCount();
+    };
+
+    const updateDimensions = () => {
+      const slideWidth = getSlideWidth();
+      allSlides.forEach((slide) => {
+        slide.style.width = `${slideWidth}px`;
+      });
+      slickTrack.style.width = `${slideWidth * allSlides.length}px`;
+    };
+
+    const setPosition = (vIndex, transition = true) => {
+      const slideWidth = getSlideWidth();
+      const tx = -vIndex * slideWidth;
+      currentTranslateX = tx;
+
+      if (transition) {
+        slickTrack.style.transition =
+          "transform 450ms cubic-bezier(0.25, 1, 0.5, 1)";
+      } else {
+        slickTrack.style.transition = "none";
+      }
+      slickTrack.style.transform = `translate3d(${tx}px, 0px, 0px)`;
+
+      const activeDot =
+        (((vIndex - totalOriginal) % totalOriginal) + totalOriginal) %
+        totalOriginal;
+      dotItems.forEach((dot, idx) => {
+        dot.classList.toggle("slick-active", idx === activeDot);
+      });
+    };
+
+    updateDimensions();
+    setPosition(virtualIndex, false);
+
+    const nextSlide = () => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      virtualIndex += 1;
+      setPosition(virtualIndex, true);
+    };
+
+    const prevSlide = () => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      virtualIndex -= 1;
+      setPosition(virtualIndex, true);
+    };
+
+    const goToSlide = (targetIndex) => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      virtualIndex =
+        totalOriginal +
+        (((targetIndex % totalOriginal) + totalOriginal) % totalOriginal);
+      setPosition(virtualIndex, true);
+    };
+
+    const handleTransitionEnd = (e) => {
+      if (e.target !== slickTrack) return;
+      isTransitioning = false;
+      if (virtualIndex >= totalOriginal * 2) {
+        virtualIndex = totalOriginal + (virtualIndex % totalOriginal);
+        setPosition(virtualIndex, false);
+      } else if (virtualIndex < totalOriginal) {
+        virtualIndex = totalOriginal * 2 - (totalOriginal - virtualIndex);
+        setPosition(virtualIndex, false);
+      }
+    };
+    slickTrack.addEventListener("transitionend", handleTransitionEnd);
+
+    dotItems.forEach((dot, idx) => {
+      dot.addEventListener("click", () => {
+        stopAutoplay();
+        goToSlide(idx);
+        startAutoplay();
+      });
+    });
+
+    const startAutoplay = () => {
+      stopAutoplay();
+      autoplayTimer = window.setInterval(() => {
+        nextSlide();
+      }, 3000);
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayTimer) {
+        window.clearInterval(autoplayTimer);
+        autoplayTimer = null;
+      }
+    };
+
+    carousel.addEventListener("mouseenter", stopAutoplay);
+    carousel.addEventListener("mouseleave", startAutoplay);
+
+    const onPointerDown = (e) => {
+      if (isTransitioning) return;
+      isDragging = true;
+      hasDragged = false;
+      startX = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+      dragOffset = 0;
+      stopAutoplay();
+      slickTrack.style.transition = "none";
+    };
+
+    const onPointerMove = (e) => {
+      if (!isDragging) return;
+      const clientX = e.clientX ?? e.touches?.[0]?.clientX ?? 0;
+      dragOffset = clientX - startX;
+      if (Math.abs(dragOffset) > 5) {
+        hasDragged = true;
+      }
+      slickTrack.style.transform = `translate3d(${currentTranslateX + dragOffset}px, 0px, 0px)`;
+    };
+
+    const onPointerUp = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      const threshold = 40;
+      if (dragOffset < -threshold) {
+        nextSlide();
+      } else if (dragOffset > threshold) {
+        prevSlide();
+      } else {
+        setPosition(virtualIndex, true);
+      }
+      startAutoplay();
+    };
+
+    const onCarouselClick = (e) => {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        hasDragged = false;
+      }
+    };
+
+    carousel.addEventListener("click", onCarouselClick, true);
+    slickList.addEventListener("mousedown", onPointerDown);
+    window.addEventListener("mousemove", onPointerMove);
+    window.addEventListener("mouseup", onPointerUp);
+
+    slickList.addEventListener("touchstart", onPointerDown, { passive: true });
+    slickList.addEventListener("touchmove", onPointerMove, { passive: true });
+    slickList.addEventListener("touchend", onPointerUp);
+
+    const onResize = () => {
+      updateDimensions();
+      setPosition(virtualIndex, false);
+    };
+    window.addEventListener("resize", onResize);
+
+    startAutoplay();
+
+    return () => {
+      stopAutoplay();
+      slickTrack.removeEventListener("transitionend", handleTransitionEnd);
+      carousel.removeEventListener("mouseenter", stopAutoplay);
+      carousel.removeEventListener("mouseleave", startAutoplay);
+      carousel.removeEventListener("click", onCarouselClick, true);
+      slickList.removeEventListener("mousedown", onPointerDown);
+      window.removeEventListener("mousemove", onPointerMove);
+      window.removeEventListener("mouseup", onPointerUp);
+      slickList.removeEventListener("touchstart", onPointerDown);
+      slickList.removeEventListener("touchmove", onPointerMove);
+      slickList.removeEventListener("touchend", onPointerUp);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [page, markup]);
+
+  useEffect(() => {
     if (page !== "Main") return undefined;
     const timer = window.setInterval(
       () => setHeroIndex((index) => (index + 1) % heroImages.length),

@@ -10,8 +10,6 @@ export default defineConfig({
     strictPort: false,
     watch: {
       ignored: [
-        "**/Demo/**",
-        "**/dist/**",
         "**/public/**",
         "**/node_modules/**",
         "**/.git/**",
