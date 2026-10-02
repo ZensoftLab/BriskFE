@@ -34,40 +34,22 @@ function SitePage({ page }) {
   const [stylesReady, setStylesReady] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
   const heroImages = [
-    "/reference/Main/images/Banner-1.jpg",
-    "/reference/Main/images/Banner-2.jpg",
+    "/images/Banner-1.jpg",
+    "/images/Banner-2.jpg",
   ];
 
   useEffect(() => {
     let cancelled = false;
+    const cleanTemplate = (templates[page] || "").replace(/^\uFEFF/, "");
     const source = new DOMParser().parseFromString(
-      templates[page],
+      cleanTemplate,
       "text/html",
     );
     document.title = source.title;
     document.body.className = source.body.className;
     document
-      .querySelectorAll("[data-demo-stylesheet], [data-demo-style]")
+      .querySelectorAll("[data-demo-style]")
       .forEach((node) => node.remove());
-
-    const stylesheetLoads = [];
-    for (const stylesheet of source.querySelectorAll(
-      'link[rel="stylesheet"]',
-    )) {
-      const filename = stylesheet.getAttribute("href")?.split("/").pop();
-      if (!filename?.endsWith(".css")) continue;
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href = `/reference/${page}/css/${filename}`;
-      link.dataset.demoStylesheet = page;
-      stylesheetLoads.push(
-        new Promise((resolve) => {
-          link.addEventListener("load", resolve, { once: true });
-          link.addEventListener("error", resolve, { once: true });
-        }),
-      );
-      document.head.append(link);
-    }
 
     for (const sourceStyle of source.querySelectorAll("style")) {
       const style = document.createElement("style");
@@ -80,9 +62,15 @@ function SitePage({ page }) {
       const control = event.target.closest(
         ".menu-mobile-nav-button, .mobile-nav-close, .ekommart-overlay",
       );
-      if (!control) return;
-      event.preventDefault();
-      document.documentElement.classList.toggle("mobile-nav-active");
+      if (control) {
+        event.preventDefault();
+        document.documentElement.classList.toggle("mobile-nav-active");
+        return;
+      }
+      const navLink = event.target.closest(".mobile-navigation a");
+      if (navLink) {
+        document.documentElement.classList.remove("mobile-nav-active");
+      }
     };
     document.addEventListener("click", toggleMobileMenu);
 
@@ -118,13 +106,21 @@ function SitePage({ page }) {
           value
             .replaceAll(
               "//briskinternet.net/wp-content/uploads/2025/06/",
-              "/reference/Main/images/",
+              "/images/",
             )
             .replaceAll(
               "https://briskinternet.net/wp-content/uploads/2025/06/",
-              "/reference/Main/images/",
+              "/images/",
             )
-            .replace(/(^|,\s*)images\//g, `$1/reference/${page}/images/`),
+            .replaceAll(
+              "https://briskinternet.net/wp-content/uploads/2022/06/",
+              "/images/",
+            )
+            .replaceAll(
+              "https://briskinternet.net/wp-content/uploads/2026/01/",
+              "/images/",
+            )
+            .replace(/(^|,\s*)images\//g, `$1/images/`),
         );
       }
       const href = element.getAttribute("href");
@@ -162,24 +158,32 @@ function SitePage({ page }) {
       }
     }
 
-    Promise.all(stylesheetLoads).then(() => {
-      if (cancelled) return;
-      setMarkup(body.innerHTML);
+    if (!cancelled) {
+      const pageNode = body.querySelector("#page");
+      const mobileNav = body.querySelector(".ekommart-mobile-nav");
+      const overlay = body.querySelector(".ekommart-overlay");
+      const combined = [
+        pageNode?.outerHTML,
+        mobileNav?.outerHTML,
+        overlay?.outerHTML,
+      ]
+        .filter(Boolean)
+        .join("\n");
+      setMarkup(combined || body.innerHTML);
       setStylesReady(true);
-    });
+    }
 
     return () => {
       cancelled = true;
       document.removeEventListener("click", toggleMobileMenu);
       document.documentElement.classList.remove("mobile-nav-active");
       document
-        .querySelectorAll(
-          `[data-demo-stylesheet="${page}"], [data-demo-style="${page}"]`,
-        )
+        .querySelectorAll(`[data-demo-style="${page}"]`)
         .forEach((node) => node.remove());
       document.body.className = "";
     };
   }, [page]);
+
 
   useEffect(() => {
     if (page === "Main")
