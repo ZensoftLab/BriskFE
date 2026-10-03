@@ -18735,4 +18735,8 @@ readers do not read off random characters that represent icons */
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 @font-face{font-family:"Font Awesome 5 Brands";font-style:normal;font-weight:400;font-display:block;src:url(../fonts/fa-brands-400.woff2) format("woff2"),url(../fonts/fa-brands-400.woff) format("woff")}.fab{font-family:"Font Awesome 5 Brands";font-weight:400}
-
+/* Contact page hero image override */
+.elementor-628 .elementor-element.elementor-element-f6e302c:not(.elementor-motion-effects-element-type-background),
+.elementor-628 .elementor-element.elementor-element-f6e302c > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-image: url("../images/Rectangle-13.png");
+}
