@@ -1,0 +1,13 @@
+.buisness-area-page {
+  font-family: Inter, Roboto, sans-serif;
+}
+
+.buisness-area-page img {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .buisness-area-page h1 {
+    font-size: 2.5rem;
+  }
+}

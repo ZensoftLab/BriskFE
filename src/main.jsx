@@ -9,6 +9,9 @@ import packageTemplate from "./templates/package.html?raw";
 import packageFormTemplate from "./templates/package-form.html?raw";
 import privacyTemplate from "./templates/privacy-policy.html?raw";
 import termsTemplate from "./templates/terms-conditions.html?raw";
+import Header from "./header.jsx";
+import Footer from "./footer.jsx";
+import BuisnessArea from "./buisnessarea.jsx";
 import "./style.css";
 
 const templates = {
@@ -27,10 +30,40 @@ const routes = {
   "/": "Main",
   "/contact": "contact-page",
   "/package/package-form": "package-form",
+  "/buisnessarea": "buisnessarea",
+  "/business-area": "buisnessarea",
 };
+
+function normalizeSharedMarkup(markup) {
+  return markup
+    .replaceAll(
+      "//briskinternet.net/wp-content/uploads/2025/06/",
+      "/images/",
+    )
+    .replaceAll(
+      "https://briskinternet.net/wp-content/uploads/2025/06/",
+      "/images/",
+    )
+    .replaceAll(
+      "https://briskinternet.net/wp-content/uploads/2022/06/",
+      "/images/",
+    )
+    .replaceAll(
+      "https://briskinternet.net/wp-content/uploads/2026/01/",
+      "/images/",
+    )
+    .replace(/(["'=])images\//g, "$1/images/")
+    .replace(/(^|,\s*)images\//g, "$1/images/")
+    .replaceAll("https://briskinternet.net/package/package-form/", "/package-form/")
+    .replaceAll("https://briskinternet.net/contact-page/", "/contact/")
+    .replaceAll("https://briskinternet.net/buisnessarea/", "/buisnessarea/")
+    .replaceAll("https://briskinternet.net/", "/");
+}
 
 function SitePage({ page }) {
   const [markup, setMarkup] = useState("");
+  const [headerMarkup, setHeaderMarkup] = useState("");
+  const [footerMarkup, setFooterMarkup] = useState("");
   const [stylesReady, setStylesReady] = useState(false);
   const [heroIndex, setHeroIndex] = useState(0);
   const heroImages = [
@@ -158,18 +191,85 @@ function SitePage({ page }) {
       }
     }
 
+    const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
+    const navItems = body.querySelectorAll(
+      ".primary-navigation .menu > li, .handheld-navigation .menu > li",
+    );
+    navItems.forEach((item) => {
+      const link = item.querySelector(":scope > a");
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+      let linkPath = "";
+      try {
+        linkPath = new URL(href, window.location.origin).pathname.replace(/\/+$/, "") || "/";
+      } catch {
+        return;
+      }
+
+      const isBusinessArea =
+        currentPath === "/buisnessarea" || currentPath === "/business-area";
+      const matchesBusinessArea =
+        linkPath === "/buisnessarea" || linkPath === "/business-area";
+      const isActive = isBusinessArea
+        ? matchesBusinessArea
+        : linkPath === currentPath;
+
+      item.classList.remove("current-menu-item", "current_page_item");
+      item.classList.toggle("active-menu-item", isActive);
+      link.setAttribute("aria-current", isActive ? "page" : "false");
+    });
+
     if (!cancelled) {
       const pageNode = body.querySelector("#page");
+      const pageHeader = pageNode?.querySelector(
+        '[data-elementor-type="header"]',
+      );
+      const pageFooter = pageNode?.querySelector(
+        '[data-elementor-type="footer"]',
+      );
       const mobileNav = body.querySelector(".ekommart-mobile-nav");
       const overlay = body.querySelector(".ekommart-overlay");
-      const combined = [
-        pageNode?.outerHTML,
-        mobileNav?.outerHTML,
-        overlay?.outerHTML,
-      ]
-        .filter(Boolean)
-        .join("\n");
-      setMarkup(combined || body.innerHTML);
+
+      // Main.html is the single source of truth for the shared layout. This
+      // keeps the header/footer (including the Business Area link) identical
+      // across every legacy page template.
+      const sharedSource = new DOMParser().parseFromString(
+        mainTemplate.replace(/^\uFEFF/, ""),
+        "text/html",
+      );
+      const sharedPage = sharedSource.querySelector("#page");
+      const sharedHeader = sharedPage?.querySelector(
+        '[data-elementor-type="header"]',
+      );
+      const sharedFooter = sharedPage?.querySelector(
+        '[data-elementor-type="footer"]',
+      );
+      const sharedMobileNav = sharedSource.querySelector(
+        ".ekommart-mobile-nav",
+      );
+      const sharedOverlay = sharedSource.querySelector(".ekommart-overlay");
+
+      // Move the shared layout sections out of the page template before the
+      // page content is rendered. Header owns the mobile navigation as well.
+      setHeaderMarkup(
+        normalizeSharedMarkup(
+          [
+            sharedHeader?.outerHTML,
+            sharedMobileNav?.outerHTML,
+            sharedOverlay?.outerHTML,
+          ]
+            .filter(Boolean)
+            .join("\n"),
+        ),
+      );
+      setFooterMarkup(normalizeSharedMarkup(sharedFooter?.outerHTML || ""));
+      pageHeader?.remove();
+      pageFooter?.remove();
+      mobileNav?.remove();
+      overlay?.remove();
+
+      setMarkup(pageNode?.outerHTML || body.innerHTML);
       setStylesReady(true);
     }
 
@@ -181,6 +281,8 @@ function SitePage({ page }) {
         .querySelectorAll(`[data-demo-style="${page}"]`)
         .forEach((node) => node.remove());
       document.body.className = "";
+      setHeaderMarkup("");
+      setFooterMarkup("");
     };
   }, [page]);
 
@@ -464,16 +566,21 @@ function SitePage({ page }) {
   }, [page, heroImages.length]);
 
   return (
-    <div
-      className={`demo-page demo-page-${page} ${stylesReady ? "is-styled" : "is-loading"}`}
-      dangerouslySetInnerHTML={{ __html: markup }}
-    />
+    <>
+      <Header markup={headerMarkup} />
+      <div
+        className={`demo-page demo-page-${page} ${stylesReady ? "is-styled" : "is-loading"}`}
+        dangerouslySetInnerHTML={{ __html: markup }}
+      />
+      <Footer markup={footerMarkup} />
+    </>
   );
 }
 
 function App() {
   const pathname = window.location.pathname.replace(/\/+$/, "") || "/";
   const page = routes[pathname] || pathname.slice(1);
+  if (page === "buisnessarea") return <BuisnessArea />;
   if (templates[page]) return <SitePage page={page} />;
   return (
     <main className="not-found">

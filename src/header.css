@@ -1,0 +1,45 @@
+.shared-header {
+  display: contents;
+}
+
+.shared-header .elementor-location-header {
+  width: 100%;
+}
+
+body.buisness-area-route .shared-header .elementor-element-31534f4,
+body.buisness-area-route .shared-header .elementor-element-31534f4 > .elementor-motion-effects-container,
+body.buisness-area-route .shared-header .elementor-element-31534f4 > .elementor-background-overlay {
+  background-color: #2e358c !important;
+}
+
+body.buisness-area-route
+  .shared-header
+  .elementor-element-31534f4
+  .elementor-icon-list-item
+  a,
+body.buisness-area-route
+  .shared-header
+  .elementor-element-31534f4
+  .elementor-icon-list-text,
+body.buisness-area-route
+  .shared-header
+  .elementor-element-31534f4
+  .elementor-icon-list-icon i {
+  color: #fff !important;
+}
+
+.shared-header .ekommart-overlay {
+  display: block;
+}
+
+.shared-header .menu-item-buisness-area > a {
+  border-radius: 999px;
+  background: #f57f25;
+  color: #fff !important;
+  padding: 10px 16px;
+  transition: background-color 180ms ease;
+}
+
+.shared-header .menu-item-buisness-area > a:hover {
+  background: #d96612;
+}

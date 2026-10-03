@@ -6,6 +6,13 @@ body {
   padding: 0 !important;
 }
 
+.primary-navigation .menu > li.active-menu-item > a,
+.handheld-navigation .menu > li.active-menu-item > a {
+  background-color: #fff !important;
+  color: #2e358c !important;
+  font-weight: 700 !important;
+}
+
 /* Keep the contact hero image above the imported Elementor background rules. */
 .demo-page-contact-page .elementor-element-f6e302c,
 .demo-page-contact-page .elementor-element-f6e302c > .elementor-motion-effects-container,
@@ -75,6 +82,36 @@ body {
 }
 
 .demo-page-about .elementor-element-4439ba6 > .elementor-container {
+  position: relative;
+  z-index: 2;
+}
+
+.demo-page-offer .elementor-element-695a6c4 {
+  position: relative;
+  overflow: hidden;
+  background-image: none !important;
+}
+
+.demo-page-offer .elementor-element-695a6c4 > .elementor-motion-effects-container,
+.demo-page-offer .elementor-element-695a6c4 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-image: none !important;
+}
+
+.demo-page-offer .offer-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+
+.demo-page-offer .elementor-element-695a6c4 > .elementor-background-overlay {
+  z-index: 1;
+}
+
+.demo-page-offer .elementor-element-695a6c4 > .elementor-container {
   position: relative;
   z-index: 2;
 }
