@@ -34,6 +34,47 @@ const routes = {
   "/business-area": "buisnessarea",
 };
 
+function updateActiveNavigation(root, currentPath) {
+  const navItems = root.querySelectorAll(
+    ".primary-navigation .menu > li, .handheld-navigation .menu > li",
+  );
+
+  navItems.forEach((item) => {
+    const link = item.querySelector(":scope > a");
+    if (!link) return;
+
+    const href = link.getAttribute("href");
+    let linkPath = "";
+    try {
+      linkPath = new URL(href, window.location.origin).pathname.replace(/\/+$/, "") || "/";
+    } catch {
+      return;
+    }
+
+    // Match the normalized client routes used by the app, including legacy
+    // WordPress URLs that are rewritten for Contact and Business Area.
+    linkPath =
+      linkPath === "/contact-page"
+        ? "/contact"
+        : linkPath === "/package/package-form"
+          ? "/package-form"
+          : linkPath === "/business-area"
+            ? "/buisnessarea"
+            : linkPath;
+
+    const isBusinessArea =
+      currentPath === "/buisnessarea" || currentPath === "/business-area";
+    const matchesBusinessArea = linkPath === "/buisnessarea";
+    const isActive = isBusinessArea
+      ? matchesBusinessArea
+      : linkPath === currentPath;
+
+    item.classList.remove("current-menu-item", "current_page_item");
+    item.classList.toggle("active-menu-item", isActive);
+    link.setAttribute("aria-current", isActive ? "page" : "false");
+  });
+}
+
 function normalizeSharedMarkup(markup) {
   return markup
     .replaceAll(
@@ -303,33 +344,7 @@ function SitePage({ page }) {
     }
 
     const currentPath = window.location.pathname.replace(/\/+$/, "") || "/";
-    const navItems = body.querySelectorAll(
-      ".primary-navigation .menu > li, .handheld-navigation .menu > li",
-    );
-    navItems.forEach((item) => {
-      const link = item.querySelector(":scope > a");
-      if (!link) return;
-
-      const href = link.getAttribute("href");
-      let linkPath = "";
-      try {
-        linkPath = new URL(href, window.location.origin).pathname.replace(/\/+$/, "") || "/";
-      } catch {
-        return;
-      }
-
-      const isBusinessArea =
-        currentPath === "/buisnessarea" || currentPath === "/business-area";
-      const matchesBusinessArea =
-        linkPath === "/buisnessarea" || linkPath === "/business-area";
-      const isActive = isBusinessArea
-        ? matchesBusinessArea
-        : linkPath === currentPath;
-
-      item.classList.remove("current-menu-item", "current_page_item");
-      item.classList.toggle("active-menu-item", isActive);
-      link.setAttribute("aria-current", isActive ? "page" : "false");
-    });
+    updateActiveNavigation(body, currentPath);
 
     if (!cancelled) {
       const pageNode = body.querySelector("#page");
@@ -360,6 +375,10 @@ function SitePage({ page }) {
         ".ekommart-mobile-nav",
       );
       const sharedOverlay = sharedSource.querySelector(".ekommart-overlay");
+
+      // The shared header comes from Main.html, whose Home link is marked as
+      // current in the source. Recalculate it for the page being visited.
+      updateActiveNavigation(sharedSource, currentPath);
 
       // Move the shared layout sections out of the page template before the
       // page content is rendered. Header owns the mobile navigation as well.

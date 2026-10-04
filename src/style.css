@@ -6,6 +6,29 @@ body {
   padding: 0 !important;
 }
 
+.shared-footer .zensoft-lab-logo {
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  height: 15px !important;
+  max-width: 100% !important;
+  width: auto !important;
+}
+
+.shared-footer .zensoft-lab-logo {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.shared-footer .zensoft-name {
+  color: #ffffff !important;
+}
+
+.shared-footer .zensoft-lab-name {
+  color: #ff0000 !important;
+  margin-left: 3px !important;
+}
+
 .primary-navigation .menu > li.active-menu-item > a,
 .handheld-navigation .menu > li.active-menu-item > a {
   background-color: #fff !important;
