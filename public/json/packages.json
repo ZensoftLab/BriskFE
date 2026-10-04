@@ -1,0 +1,242 @@
+{
+  "page": "package",
+  "currency": "TK",
+  "billingPeriod": "month",
+  "packageCount": 10,
+  "packages": [
+    {
+      "id": "bronze",
+      "name": "Bronze",
+      "displayName": "🔥Bronze",
+      "sourceElementId": "27bedd8",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": {
+        "value": 30,
+        "unit": "Mbps",
+        "display": "30 Mbps"
+      },
+      "price": {
+        "amount": 525,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK525 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": {
+        "label": "Buy Bronze",
+        "href": "/package/package-form/"
+      },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed"
+      ]
+    },
+    {
+      "id": "opal",
+      "name": "Opal",
+      "displayName": "🔥Opal",
+      "sourceElementId": "fd3464c",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 40, "unit": "Mbps", "display": "40 Mbps" },
+      "price": {
+        "amount": 630,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK630 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Opal", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed"
+      ]
+    },
+    {
+      "id": "pearl",
+      "name": "Pearl",
+      "displayName": "🔥Pearl",
+      "sourceElementId": "8884b95",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 50, "unit": "Mbps", "display": "50 Mbps" },
+      "price": {
+        "amount": 735,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK735 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Pearl", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed"
+      ]
+    },
+    {
+      "id": "platinum",
+      "name": "Platinum",
+      "displayName": "🔥Platinum",
+      "sourceElementId": "8ad84c4",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 60, "unit": "Mbps", "display": "60 Mbps" },
+      "price": {
+        "amount": 840,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK840 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Platinum", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed",
+        "Free public IP"
+      ]
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "displayName": "🔥Gold",
+      "sourceElementId": "9017051",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 100, "unit": "Mbps", "display": "100 Mbps" },
+      "price": {
+        "amount": 1050,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK1050 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Gold", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed",
+        "Free public IP"
+      ]
+    },
+    {
+      "id": "diamond",
+      "name": "Diamond",
+      "displayName": "🔥Diamond",
+      "sourceElementId": "3a20e61",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 120, "unit": "Mbps", "display": "120 Mbps" },
+      "price": {
+        "amount": 1260,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK1260/mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Diamond", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed",
+        "Free public IP"
+      ]
+    },
+    {
+      "id": "spinal",
+      "name": "Spinal",
+      "displayName": "🔥Spinal",
+      "sourceElementId": "ccb746d",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 160, "unit": "Mbps", "display": "160 Mbps" },
+      "price": {
+        "amount": 1680,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK1680 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Spinal", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed",
+        "Free public IP"
+      ]
+    },
+    {
+      "id": "spinal-plus",
+      "name": "Spinal+",
+      "displayName": "🔥Spinal+",
+      "sourceElementId": "afd6747",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 220, "unit": "Mbps", "display": "220 Mbps" },
+      "price": {
+        "amount": 2100,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK2100 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Spinal+", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed",
+        "Free public IP"
+      ]
+    },
+    {
+      "id": "star",
+      "name": "Star",
+      "displayName": "🔥Star",
+      "sourceElementId": "da7c312",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 250, "unit": "Mbps", "display": "250 Mbps" },
+      "price": {
+        "amount": 2625,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK2625 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Spinal+", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed",
+        "Free public IP"
+      ]
+    },
+    {
+      "id": "moon",
+      "name": "Moon",
+      "displayName": "🔥Moon",
+      "sourceElementId": "1b09576",
+      "tagline": "Choose a package and start your internet journey",
+      "speed": { "value": 300, "unit": "Mbps", "display": "300 Mbps" },
+      "price": {
+        "amount": 3150,
+        "currency": "TK",
+        "billingPeriod": "month",
+        "display": "TK3150 /mo"
+      },
+      "vat": "Including 5% VAT",
+      "cta": { "label": "Buy Spinal+", "href": "/package/package-form/" },
+      "features": [
+        "Lag free gaming",
+        "Bufferless streeming",
+        "Clear voice chat",
+        "Unlimited BDIX speed",
+        "Free public IP"
+      ]
+    }
+  ]
+}

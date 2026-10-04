@@ -86,6 +86,10 @@ body {
   z-index: 2;
 }
 
+.demo-page-package .elementor-element-be23ec6 {
+  margin-top: 50px !important;
+}
+
 .demo-page-offer .elementor-element-695a6c4 {
   position: relative;
   overflow: hidden;
@@ -231,6 +235,24 @@ body {
 .demo-page-Main .elementor-element-5925e57 > .e-con-inner {
   padding-top: 24px !important;
   padding-block-start: 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  align-content: center !important;
+  justify-content: center !important;
+  gap: 0 !important;
+}
+
+.demo-page-Main .elementor-element-06c4d26,
+.demo-page-Main .elementor-element-ae26918 {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  align-items: center !important;
+  align-content: center !important;
+  gap: 20px 60px !important;
+  column-gap: 60px !important;
+  row-gap: 20px !important;
+  width: 100% !important;
 }
 
 .demo-page-Main .elementor-element-e98652b .elementor-heading-title,
@@ -477,6 +499,12 @@ body {
   .demo-page-Main .elementor-element-5925e57 > .e-con-inner {
     padding-top: 16px !important;
     padding-block-start: 16px !important;
+  }
+
+  .demo-page-Main .elementor-element-06c4d26,
+  .demo-page-Main .elementor-element-ae26918 {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 20px !important;
   }
 
   .demo-page-Main .elementor-element-e98652b .elementor-heading-title,

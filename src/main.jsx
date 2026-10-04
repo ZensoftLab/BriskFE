@@ -60,16 +60,114 @@ function normalizeSharedMarkup(markup) {
     .replaceAll("https://briskinternet.net/", "/");
 }
 
+const homepagePackageCardIds = {
+  bronze: "0baf365",
+  opal: "ccc10b7",
+  pearl: "60b930f",
+  platinum: "f148e96",
+};
+
+function applyPackageData(body, packageData, cardIdMap = {}) {
+  if (!packageData?.packages?.length) return;
+
+  for (const packageItem of packageData.packages) {
+    const card = body.querySelector(
+      `[data-id="${cardIdMap[packageItem.id] || packageItem.sourceElementId}"]`,
+    );
+    if (!card) continue;
+
+    const headings = Array.from(card.querySelectorAll("h2"));
+    const nameHeading = headings.find((heading) =>
+      heading.textContent.trim().startsWith("🔥"),
+    );
+    const speedHeading = headings.find((heading) =>
+      heading.textContent.includes(packageItem.speed.unit),
+    );
+    const priceHeading = headings.find((heading) =>
+      heading.textContent.includes("/mo"),
+    );
+    const tagline = Array.from(
+      card.querySelectorAll(".elementor-heading-title.elementor-size-default"),
+    ).find((node) => node.textContent.includes("Choose a package"));
+    const button = card.querySelector(".elementor-button-text");
+    const featureList = card.querySelector(".elementor-icon-list-items");
+
+    if (nameHeading) nameHeading.textContent = packageItem.displayName;
+    if (speedHeading) speedHeading.textContent = packageItem.speed.display;
+    if (priceHeading) {
+      priceHeading.textContent = packageItem.price.display;
+      const vat = document.createElement("p");
+      const vatText = document.createElement("span");
+      vatText.style.color = "gray";
+      vatText.style.fontSize = "0.5em";
+      vatText.textContent = packageItem.vat;
+      vat.append(vatText);
+      priceHeading.append(vat);
+    }
+    if (tagline) tagline.textContent = packageItem.tagline;
+    if (button) {
+      button.textContent = packageItem.cta.label;
+      button.closest("a")?.setAttribute("href", packageItem.cta.href);
+    }
+
+    if (featureList) {
+      const template = featureList.querySelector("li");
+      featureList.replaceChildren();
+      for (const feature of packageItem.features) {
+        const item = template?.cloneNode(true) || document.createElement("li");
+        const text = item.querySelector(".elementor-icon-list-text");
+        if (text) text.textContent = feature;
+        else item.textContent = feature;
+        featureList.append(item);
+      }
+    }
+  }
+}
+
 function SitePage({ page }) {
   const [markup, setMarkup] = useState("");
   const [headerMarkup, setHeaderMarkup] = useState("");
   const [footerMarkup, setFooterMarkup] = useState("");
   const [stylesReady, setStylesReady] = useState(false);
+  const [packageData, setPackageData] = useState(null);
   const [heroIndex, setHeroIndex] = useState(0);
   const heroImages = [
     "/images/Banner-1.jpg",
     "/images/Banner-2.jpg",
   ];
+
+  useEffect(() => {
+    if (page !== "Main" && page !== "package") {
+      setPackageData(null);
+      return undefined;
+    }
+
+    const controller = new AbortController();
+    fetch("/json/packages.json", {
+      signal: controller.signal,
+      cache: "no-store",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Package data request failed: ${response.status}`);
+        }
+        const contentType = response.headers.get("content-type") || "";
+        if (!contentType.includes("application/json")) {
+          throw new Error(
+            `Package data endpoint returned ${contentType || "an unknown content type"}`,
+          );
+        }
+        return response.json();
+      })
+      .then((data) => setPackageData(data))
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          console.error("Unable to load package data", error);
+        }
+      });
+
+    return () => controller.abort();
+  }, [page]);
 
   useEffect(() => {
     let cancelled = false;
@@ -117,6 +215,19 @@ function SitePage({ page }) {
         heroImage.decoding = "async";
         heroImage.fetchPriority = "high";
       }
+    }
+
+    if (page === "package") {
+      applyPackageData(body, packageData);
+    }
+    if (page === "Main") {
+      applyPackageData(
+        body,
+        packageData
+          ? { ...packageData, packages: packageData.packages.slice(0, 4) }
+          : null,
+        homepagePackageCardIds,
+      );
     }
 
     body.querySelectorAll("img").forEach((img) => {
@@ -284,7 +395,7 @@ function SitePage({ page }) {
       setHeaderMarkup("");
       setFooterMarkup("");
     };
-  }, [page]);
+  }, [page, packageData]);
 
 
   useEffect(() => {
