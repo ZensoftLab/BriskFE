@@ -1,5 +1,6 @@
 .buisness-area-page {
   font-family: Inter, Roboto, sans-serif;
+  background: #f7f9ff;
 }
 
 .buisness-area-page img {
@@ -9,5 +10,182 @@
 @media (max-width: 767px) {
   .buisness-area-page h1 {
     font-size: 2.5rem;
+  }
+}
+
+.business-coverage-section {
+  padding: clamp(64px, 8vw, 112px) 20px;
+}
+
+.business-coverage-container {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+.business-coverage-heading {
+  max-width: 650px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.business-coverage-eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: #ef6936;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.business-coverage-heading h1 {
+  margin: 0 0 14px;
+  color: #2e358c;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.08;
+}
+
+.business-coverage-heading p {
+  margin: 0;
+  color: #5d647b;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.coverage-map-shell {
+  overflow: hidden;
+  min-height: 560px;
+  border: 8px solid #fff;
+  border-radius: 24px;
+  background: #d9e7ef;
+  box-shadow: 0 22px 55px rgba(36, 48, 118, 0.14);
+}
+
+.coverage-map {
+  z-index: 0;
+  height: min(70vh, 650px);
+  min-height: 544px;
+  width: 100%;
+}
+
+.coverage-map-status {
+  display: grid;
+  min-height: 560px;
+  place-items: center;
+  border: 1px solid #e0e5f5;
+  border-radius: 24px;
+  background: #fff;
+  color: #5d647b;
+}
+
+.coverage-map-status--error {
+  color: #a53b31;
+}
+
+.coverage-map-marker {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  box-shadow: 0 2px 7px rgba(20, 28, 75, 0.35);
+}
+
+.coverage-map-marker span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+}
+
+.coverage-map-marker--business {
+  background: #2e358c;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.coverage-map-marker--reseller {
+  background: #ef6936;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.coverage-map .leaflet-popup-content {
+  margin: 14px 16px;
+  color: #272c4f;
+  font-family: Inter, Roboto, sans-serif;
+  line-height: 1.4;
+}
+
+.coverage-map .leaflet-popup-content strong,
+.coverage-map .leaflet-popup-content small {
+  display: block;
+}
+
+.coverage-map .leaflet-popup-content small {
+  margin-top: 4px;
+  color: #6d738a;
+}
+
+.coverage-map-legend {
+  position: absolute;
+  z-index: 1000;
+  right: 18px;
+  bottom: 18px;
+  display: grid;
+  gap: 9px;
+  min-width: 160px;
+  padding: 13px 15px;
+  border: 1px solid rgba(46, 53, 140, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 7px 20px rgba(36, 48, 118, 0.14);
+  color: #404766;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.coverage-map-legend__item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.coverage-map-legend__dot {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(20, 28, 75, 0.35);
+}
+
+.coverage-map-legend__dot--business {
+  background: #2e358c;
+}
+
+.coverage-map-legend__dot--reseller {
+  background: #ef6936;
+}
+
+@media (max-width: 767px) {
+  .business-coverage-section {
+    padding: 52px 14px 72px;
+  }
+
+  .coverage-map-shell {
+    min-height: 460px;
+    border-width: 5px;
+    border-radius: 18px;
+  }
+
+  .coverage-map {
+    min-height: 450px;
+    height: 68vh;
+  }
+
+  .coverage-map-legend {
+    right: 10px;
+    bottom: 10px;
+    min-width: 145px;
+    padding: 10px 12px;
+    font-size: 0.72rem;
   }
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import mainTemplate from "./templates/Main.html?raw";
 import Header from "./header.jsx";
 import Footer from "./footer.jsx";
+import BusinessCoverageMap from "./components/BusinessCoverageMap.jsx";
 import "./buisnessarea.css";
 
 function getSharedMarkup() {
@@ -75,7 +76,21 @@ export default function BuisnessArea() {
   return (
     <>
       <Header markup={sharedLayout.header} />
-      <main className="buisness-area-page" />
+      <main className="buisness-area-page">
+        <section className="business-coverage-section" aria-labelledby="business-coverage-title">
+          <div className="business-coverage-container">
+            <div className="business-coverage-heading">
+              <span className="business-coverage-eyebrow">Stay connected across Bangladesh</span>
+              <h1 id="business-coverage-title">Our Business Coverage Area</h1>
+              <p>
+                Explore our available service locations and reseller points on the map.
+                Select a marker to see the area name.
+              </p>
+            </div>
+            <BusinessCoverageMap />
+          </div>
+        </section>
+      </main>
       <Footer markup={sharedLayout.footer} />
     </>
   );

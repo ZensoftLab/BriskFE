@@ -1,0 +1,269 @@
+{
+  "coverage_areas": [
+    {
+      "region_id": "6",
+      "area_name": "Monipur",
+      "latitude": 23.7995,
+      "longitude": 90.3752,
+      "sub_locations": [
+        {"name": "Monipur", "latitude": 23.7995, "longitude": 90.3752},
+        {"name": "Monipur Khaler Mor", "latitude": 23.8012, "longitude": 90.3735},
+        {"name": "Monipur Molla Road", "latitude": 23.7988, "longitude": 90.3741},
+        {"name": "Monipur Adarsha Road", "latitude": 23.7975, "longitude": 90.3760},
+        {"name": "Monipur Meherunnesa Masjid", "latitude": 23.8001, "longitude": 90.3758},
+        {"name": "Monipur Amtola Masjid", "latitude": 23.8020, "longitude": 90.3748},
+        {"name": "Monipur Commissioner Gali", "latitude": 23.7982, "longitude": 90.3739},
+        {"name": "Monipur Kanthaltola Panir Pump", "latitude": 23.8008, "longitude": 90.3765},
+        {"name": "Monipur Koborsthan Road", "latitude": 23.8031, "longitude": 90.3755},
+        {"name": "Monipur Mike Masjid", "latitude": 23.7990, "longitude": 90.3768}
+      ]
+    },
+    {
+      "region_id": "7",
+      "area_name": "Borbag",
+      "latitude": 23.8028,
+      "longitude": 90.3665,
+      "sub_locations": [
+        {"name": "Borbag Shaheen Pukur", "latitude": 23.8032, "longitude": 90.3661},
+        {"name": "Borbag Seven Up Gali", "latitude": 23.8021, "longitude": 90.3670},
+        {"name": "Borbag Sattara Masjid Road", "latitude": 23.8035, "longitude": 90.3658},
+        {"name": "Borbag Masjid Road", "latitude": 23.8025, "longitude": 90.3668}
+      ]
+    },
+    {
+      "region_id": "8",
+      "area_name": "Senpara",
+      "latitude": 23.7953,
+      "longitude": 90.3758,
+      "sub_locations": [
+        {"name": "Senpara", "latitude": 23.7953, "longitude": 90.3758},
+        {"name": "Kerim Gali", "latitude": 23.7948, "longitude": 90.3762},
+        {"name": "Amtola Bazar", "latitude": 23.7960, "longitude": 90.3750},
+        {"name": "Vision Garments Road", "latitude": 23.7939, "longitude": 90.3765},
+        {"name": "Panir Tanki", "latitude": 23.7958, "longitude": 90.3742},
+        {"name": "Walton Gali", "latitude": 23.7942, "longitude": 90.3770},
+        {"name": "Romiz Uddin Road", "latitude": 23.7965, "longitude": 90.3761},
+        {"name": "Giringir Mor", "latitude": 23.7932, "longitude": 90.3754},
+        {"name": "Bou Bazar", "latitude": 23.7955, "longitude": 90.3775},
+        {"name": "Mother Care School", "latitude": 23.7940, "longitude": 90.3748}
+      ]
+    },
+    {
+      "region_id": "9",
+      "area_name": "Mirpur-2 & Kazipara",
+      "latitude": 23.8062,
+      "longitude": 90.3642,
+      "sub_locations": [
+        {"name": "Mirpur-2 Panir Tanki Area", "latitude": 23.8081, "longitude": 90.3615},
+        {"name": "Mirpur-2 Block-A", "latitude": 23.8055, "longitude": 90.3630},
+        {"name": "Mirpur-2 Block-B", "latitude": 23.8070, "longitude": 90.3620},
+        {"name": "Mirpur-2 Block-C", "latitude": 23.8085, "longitude": 90.3645},
+        {"name": "Mirpur-2 Block-E", "latitude": 23.8060, "longitude": 90.3660},
+        {"name": "Mirpur-2 Block-F", "latitude": 23.8040, "longitude": 90.3650},
+        {"name": "Mirpur-2 Block-G", "latitude": 23.8090, "longitude": 90.3628},
+        {"name": "Mirpur-2 Block-G1", "latitude": 23.8095, "longitude": 90.3632},
+        {"name": "Mirpur-2 Block-H", "latitude": 23.8075, "longitude": 90.3670},
+        {"name": "Kazipara", "latitude": 23.7885, "longitude": 90.3725},
+        {"name": "Bottola Road", "latitude": 23.7892, "longitude": 90.3718},
+        {"name": "10 No Hospital", "latitude": 23.8058, "longitude": 90.3688},
+        {"name": "Behind 10 No Shah Ali Market", "latitude": 23.8065, "longitude": 90.3680}
+      ]
+    },
+    {
+      "region_id": "10",
+      "area_name": "Mirpur-6",
+      "latitude": 23.8118,
+      "longitude": 90.3635,
+      "sub_locations": [
+        {"name": "Mirpur-6 Block-A", "latitude": 23.8105, "longitude": 90.3620},
+        {"name": "Mirpur-6 Block-B", "latitude": 23.8120, "longitude": 90.3630},
+        {"name": "Mirpur-6 Block-C", "latitude": 23.8135, "longitude": 90.3640},
+        {"name": "Mirpur-6 Block-D", "latitude": 23.8110, "longitude": 90.3652},
+        {"name": "Mirpur-6 Block-Ta", "latitude": 23.8128, "longitude": 90.3615}
+      ]
+    },
+    {
+      "region_id": "11",
+      "area_name": "Mirpur-7",
+      "latitude": 23.8185,
+      "longitude": 90.3648,
+      "sub_locations": [
+        {"name": "Mirpur-7 (All Area)", "latitude": 23.8185, "longitude": 90.3648}
+      ]
+    },
+    {
+      "region_id": "12",
+      "area_name": "Mirpur-10",
+      "latitude": 23.8069,
+      "longitude": 90.3687,
+      "sub_locations": [
+        {"name": "Mirpur-10 Block-A", "latitude": 23.8080, "longitude": 90.3680},
+        {"name": "Mirpur-10 Block-B", "latitude": 23.8060, "longitude": 90.3695},
+        {"name": "Mirpur-10 Block-C", "latitude": 23.8072, "longitude": 90.3708}
+      ]
+    },
+    {
+      "region_id": "13",
+      "area_name": "Mirpur-11",
+      "latitude": 23.8172,
+      "longitude": 90.3682,
+      "sub_locations": [
+        {"name": "Mirpur-11 Block-A", "latitude": 23.8160, "longitude": 90.3670},
+        {"name": "Mirpur-11 Block-B", "latitude": 23.8175, "longitude": 90.3685},
+        {"name": "Mirpur-11 Block-D", "latitude": 23.8190, "longitude": 90.3690},
+        {"name": "Mirpur-11 Avenue-1", "latitude": 23.8152, "longitude": 90.3662},
+        {"name": "Mirpur-11 Avenue-2", "latitude": 23.8168, "longitude": 90.3678},
+        {"name": "Mirpur-11 Avenue-3", "latitude": 23.8182, "longitude": 90.3701}
+      ]
+    },
+    {
+      "region_id": "14",
+      "area_name": "Mohammadpur & Adabar",
+      "latitude": 23.7658,
+      "longitude": 90.3584,
+      "sub_locations": [
+        {"name": "Shia Masjid", "latitude": 23.7618, "longitude": 90.3602},
+        {"name": "Shyamoli", "latitude": 23.7719, "longitude": 90.3631},
+        {"name": "Shyamoli PC Culture Housing", "latitude": 23.7705, "longitude": 90.3608},
+        {"name": "Ring Road", "latitude": 23.7682, "longitude": 90.3625},
+        {"name": "Babar Road", "latitude": 23.7588, "longitude": 90.3660},
+        {"name": "Humayun Road", "latitude": 23.7595, "longitude": 90.3672},
+        {"name": "Johuri Mohalla", "latitude": 23.7570, "longitude": 90.3645},
+        {"name": "Town Hall Mohammadpur", "latitude": 23.7591, "longitude": 90.3648},
+        {"name": "Haq Saheb Garaj", "latitude": 23.7625, "longitude": 90.3590},
+        {"name": "Iqbal Road", "latitude": 23.7562, "longitude": 90.3655},
+        {"name": "Tikkapara", "latitude": 23.7580, "longitude": 90.3610},
+        {"name": "Haji Chinu Miah Road", "latitude": 23.7602, "longitude": 90.3585},
+        {"name": "Salimullah Road", "latitude": 23.7558, "longitude": 90.3638},
+        {"name": "Krishi Market Area", "latitude": 23.7630, "longitude": 90.3615},
+        {"name": "Razia Sultana Road", "latitude": 23.7578, "longitude": 90.3640},
+        {"name": "Shershah Suri Road", "latitude": 23.7600, "longitude": 90.3630},
+        {"name": "PC Culture Housing", "latitude": 23.7690, "longitude": 90.3580},
+        {"name": "Rafiq Housing", "latitude": 23.7725, "longitude": 90.3562},
+        {"name": "Prominent Housing", "latitude": 23.7675, "longitude": 90.3540},
+        {"name": "Probal Housing", "latitude": 23.7660, "longitude": 90.3555},
+        {"name": "Prantashala Housing", "latitude": 23.7685, "longitude": 90.3530},
+        {"name": "Shyamoli Housing", "latitude": 23.7738, "longitude": 90.3585},
+        {"name": "Mohammadiya Housing Society", "latitude": 23.7645, "longitude": 90.3570},
+        {"name": "Nobodoy Housing", "latitude": 23.7670, "longitude": 90.3520},
+        {"name": "Baitul Aman Housing", "latitude": 23.7610, "longitude": 90.3565},
+        {"name": "Mansurabad Housing", "latitude": 23.7632, "longitude": 90.3510},
+        {"name": "Sunibir Housing", "latitude": 23.7698, "longitude": 90.3515},
+        {"name": "Ring Road Janata Housing", "latitude": 23.7710, "longitude": 90.3610}
+      ]
+    },
+    {
+      "region_id": "15",
+      "area_name": "Shewrapara & Surrounding Zones",
+      "latitude": 23.7850,
+      "longitude": 90.3720,
+      "sub_locations": [
+        {"name": "Amtola", "latitude": 23.7845, "longitude": 90.3710},
+        {"name": "60 Feet Chafra Masjid", "latitude": 23.7878, "longitude": 90.3675},
+        {"name": "60 Feet Mikewala Masjid", "latitude": 23.7895, "longitude": 90.3668},
+        {"name": "Paikpara", "latitude": 23.7812, "longitude": 90.3665},
+        {"name": "Middle Pirerbag", "latitude": 23.7865, "longitude": 90.3650},
+        {"name": "South Pirerbag", "latitude": 23.7840, "longitude": 90.3645},
+        {"name": "Pirerbag (Complete Area)", "latitude": 23.7855, "longitude": 90.3648},
+        {"name": "Krishibid Bazar (Complete Zone)", "latitude": 23.7880, "longitude": 90.3688},
+        {"name": "Border Bazar", "latitude": 23.7860, "longitude": 90.3670},
+        {"name": "WASA Road", "latitude": 23.7872, "longitude": 90.3695},
+        {"name": "Technical Mor", "latitude": 23.7808, "longitude": 90.3542},
+        {"name": "West Shewrapara (Complete Area)", "latitude": 23.7858, "longitude": 90.3705},
+        {"name": "Ali Miar Tek", "latitude": 23.7832, "longitude": 90.3685},
+        {"name": "Beltola", "latitude": 23.7848, "longitude": 90.3690},
+        {"name": "Ananda Bazar", "latitude": 23.7868, "longitude": 90.3715},
+        {"name": "Iqbal Road", "latitude": 23.7835, "longitude": 90.3730},
+        {"name": "Chandrima Road", "latitude": 23.7828, "longitude": 90.3708},
+        {"name": "Shamim Sarani", "latitude": 23.7875, "longitude": 90.3738},
+        {"name": "Baitus Sakur", "latitude": 23.7862, "longitude": 90.3725},
+        {"name": "Zone Road", "latitude": 23.7888, "longitude": 90.3712},
+        {"name": "West Kafrul", "latitude": 23.7920, "longitude": 90.3765},
+        {"name": "East Shewrapara (Complete Area)", "latitude": 23.7842, "longitude": 90.3750},
+        {"name": "Orbit Gali", "latitude": 23.7850, "longitude": 90.3742},
+        {"name": "Masjid Road", "latitude": 23.7838, "longitude": 90.3755},
+        {"name": "Russell Chamber", "latitude": 23.7846, "longitude": 90.3760},
+        {"name": "Runway Camp", "latitude": 23.7890, "longitude": 90.3780},
+        {"name": "Jamtola", "latitude": 23.7825, "longitude": 90.3745},
+        {"name": "Ibrahimpur", "latitude": 23.7968, "longitude": 90.3812},
+        {"name": "Matubborer Pukurpar", "latitude": 23.7950, "longitude": 90.3830}
+      ]
+    },
+    {
+      "region_id": "16",
+      "area_name": "Banasree",
+      "latitude": 23.7628,
+      "longitude": 90.4312,
+      "sub_locations": [
+        {"name": "Humayun City", "latitude": 23.7592, "longitude": 90.4345},
+        {"name": "Meradia", "latitude": 23.7580, "longitude": 90.4380},
+        {"name": "Porabari", "latitude": 23.7565, "longitude": 90.4395},
+        {"name": "West Nondipara", "latitude": 23.7540, "longitude": 90.4420},
+        {"name": "South Banasree Block-G", "latitude": 23.7588, "longitude": 90.4330},
+        {"name": "South Banasree Block-H", "latitude": 23.7575, "longitude": 90.4320},
+        {"name": "South Banasree Block-L", "latitude": 23.7550, "longitude": 90.4350},
+        {"name": "South Banasree Block-M", "latitude": 23.7542, "longitude": 90.4362},
+        {"name": "South Banasree Block-N", "latitude": 23.7535, "longitude": 90.4375},
+        {"name": "South Banasree Block-K", "latitude": 23.7560, "longitude": 90.4340},
+        {"name": "South Banasree Block-B", "latitude": 23.7612, "longitude": 90.4310},
+        {"name": "South Banasree Block-J", "latitude": 23.7568, "longitude": 90.4332},
+        {"name": "South Banasree Block-F", "latitude": 23.7595, "longitude": 90.4325},
+        {"name": "South Banasree Block-D", "latitude": 23.7605, "longitude": 90.4318},
+        {"name": "South Banasree Block-C", "latitude": 23.7618, "longitude": 90.4305},
+        {"name": "South Banasree Block-E", "latitude": 23.7600, "longitude": 90.4335}
+      ]
+    },
+    {
+      "region_id": "17",
+      "area_name": "Aftabnagar",
+      "latitude": 23.7685,
+      "longitude": 90.4325,
+      "sub_locations": [
+        {"name": "Addar Mor", "latitude": 23.7670, "longitude": 90.4310},
+        {"name": "Aftabnagar Block-H", "latitude": 23.7710, "longitude": 90.4350},
+        {"name": "Aftabnagar Block-G", "latitude": 23.7700, "longitude": 90.4340},
+        {"name": "Aftabnagar Block-F", "latitude": 23.7690, "longitude": 90.4330},
+        {"name": "Aftabnagar Adjacent Areas", "latitude": 23.7680, "longitude": 90.4320}
+      ]
+    },
+    {
+      "region_id": "18",
+      "area_name": "Bosila",
+      "latitude": 23.7485,
+      "longitude": 90.3450,
+      "sub_locations": [
+        {"name": "Bosila-40 Feet", "latitude": 23.7510, "longitude": 90.3502},
+        {"name": "Bosila Model Town", "latitude": 23.7470, "longitude": 90.3440},
+        {"name": "Bosila Garden City", "latitude": 23.7455, "longitude": 90.3420},
+        {"name": "Bosila Future Town", "latitude": 23.7430, "longitude": 90.3395}
+      ]
+    }
+  ],
+  "resellers": [
+    {"name": "Dakshin-Khan", "city": "Dhaka", "country": "Bangladesh", "latitude": 23.8583, "longitude": 90.4284},
+    {"name": "Madaripur", "city": "Madaripur", "country": "Bangladesh", "latitude": 23.1641, "longitude": 90.1897},
+    {"name": "Farmgate", "city": "Dhaka", "country": "Bangladesh", "latitude": 23.7561, "longitude": 90.3872},
+    {"name": "Banasree", "city": "Dhaka", "country": "Bangladesh", "latitude": 23.7628, "longitude": 90.4312},
+    {"name": "Mirpur", "city": "Dhaka", "country": "Bangladesh", "latitude": 23.8069, "longitude": 90.3687},
+    {"name": "Keranigonj", "city": "Dhaka", "country": "Bangladesh", "latitude": 23.6821, "longitude": 90.3814},
+    {"name": "Shibchar", "city": "Madaripur", "country": "Bangladesh", "latitude": 23.3512, "longitude": 90.1601},
+    {"name": "Beraid", "city": "Dhaka", "country": "Bangladesh", "latitude": 23.7885, "longitude": 90.4589},
+    {"name": "Narsingdi", "city": "Narsingdi", "country": "Bangladesh", "latitude": 23.9193, "longitude": 90.7176},
+    {"name": "Tangail", "city": "Tangail", "country": "Bangladesh", "latitude": 24.2513, "longitude": 89.9167},
+    {"name": "Mostafapur", "city": "Madaripur", "country": "Bangladesh", "latitude": 23.1292, "longitude": 90.1584},
+    {"name": "Rajbari", "city": "Rajbari", "country": "Bangladesh", "latitude": 23.7574, "longitude": 89.6444},
+    {"name": "Karimganj", "city": "Kishoreganj", "country": "Bangladesh", "latitude": 24.4585, "longitude": 90.8801},
+    {"name": "Kishoreganj", "city": "Kishoreganj", "country": "Bangladesh", "latitude": 24.4332, "longitude": 90.7866},
+    {"name": "Pakundia", "city": "Kishoreganj", "country": "Bangladesh", "latitude": 24.3275, "longitude": 90.6811},
+    {"name": "Muksudpur", "city": "Gopalganj", "country": "Bangladesh", "latitude": 23.3328, "longitude": 89.8631},
+    {"name": "Vanga", "city": "Faridpur", "country": "Bangladesh", "latitude": 23.3820, "longitude": 89.9862},
+    {"name": "Niyamotpur", "city": "Naogaon", "country": "Bangladesh", "latitude": 24.8624, "longitude": 88.6385},
+    {"name": "Bhedarganj", "city": "Shariatpur", "country": "Bangladesh", "latitude": 23.2395, "longitude": 90.4431},
+    {"name": "Manikgonj", "city": "Manikganj", "country": "Bangladesh", "latitude": 23.8644, "longitude": 90.0047},
+    {"name": "Patuakhali", "city": "Patuakhali", "country": "Bangladesh", "latitude": 22.3550, "longitude": 90.3349},
+    {"name": "Khilgaon Goran", "city": "Dhaka", "country": "Bangladesh", "latitude": 23.7518, "longitude": 90.4301},
+    {"name": "Munshiganj Islampur", "city": "Munshiganj", "country": "Bangladesh", "latitude": 23.5480, "longitude": 90.5312},
+    {"name": "Singra", "city": "Natore", "country": "Bangladesh", "latitude": 24.5033, "longitude": 89.1415},
+    {"name": "Narayanganj Sadar", "city": "Narayanganj", "country": "Bangladesh", "latitude": 23.6238, "longitude": 90.5000}
+  ]
+}
