@@ -29,6 +29,22 @@ body {
   margin-left: 3px !important;
 }
 
+@media (max-width: 767px) {
+  .shared-footer .zensoft-credit {
+    display: flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .shared-footer .zensoft-credit > span {
+    display: inline-flex !important;
+    justify-content: center !important;
+  }
+}
+
 .primary-navigation .menu > li.active-menu-item > a,
 .handheld-navigation .menu > li.active-menu-item > a {
   background-color: #fff !important;
