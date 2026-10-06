@@ -79,14 +79,6 @@ export default function BuisnessArea() {
       <main className="buisness-area-page">
         <section className="business-coverage-section" aria-labelledby="business-coverage-title">
           <div className="business-coverage-container">
-            <div className="business-coverage-heading">
-              <span className="business-coverage-eyebrow">Stay connected across Bangladesh</span>
-              <h1 id="business-coverage-title">Our Business Coverage Area</h1>
-              <p>
-                Explore our available service locations and reseller points on the map.
-                Select a marker to see the area name.
-              </p>
-            </div>
             <BusinessCoverageMap />
           </div>
         </section>

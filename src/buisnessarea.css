@@ -1,6 +1,6 @@
 .buisness-area-page {
   font-family: Inter, Roboto, sans-serif;
-  background: #f7f9ff;
+  background: #f4f7f6;
 }
 
 .buisness-area-page img {
@@ -14,11 +14,11 @@
 }
 
 .business-coverage-section {
-  padding: clamp(64px, 8vw, 112px) 20px;
+  padding: 26px 20px 54px;
 }
 
 .business-coverage-container {
-  width: min(1180px, 100%);
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -53,20 +53,371 @@
 }
 
 .coverage-map-shell {
+  position: relative;
   overflow: hidden;
-  min-height: 560px;
-  border: 8px solid #fff;
-  border-radius: 24px;
+  min-height: 700px;
+  border: 1px solid #e6ecea;
+  border-radius: 22px;
   background: #d9e7ef;
-  box-shadow: 0 22px 55px rgba(36, 48, 118, 0.14);
+  box-shadow: 0 22px 55px rgba(20, 56, 45, 0.12);
 }
 
 .coverage-map {
   z-index: 0;
-  height: min(70vh, 650px);
-  min-height: 544px;
+  height: min(78vh, 760px);
+  min-height: 650px;
   width: 100%;
 }
+
+/* Keep Leaflet's zoom controls clear of the coverage filter panel. */
+.coverage-map .leaflet-top.leaflet-left {
+  top: 18px;
+  right: 18px;
+  left: auto;
+}
+
+.coverage-map .coverage-map-locate-control {
+  margin-top: 7px;
+}
+
+.coverage-map .coverage-map-locate-button {
+  display: grid;
+  box-sizing: border-box;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border: 0;
+  padding: 0;
+  background: #fff;
+  color: #2563eb;
+  cursor: pointer;
+  line-height: 26px;
+}
+
+.coverage-map .coverage-map-locate-button:hover,
+.coverage-map .coverage-map-locate-button:focus-visible {
+  background: #f0f5ff;
+  color: #1d4ed8;
+  outline: 0;
+}
+
+.coverage-map .coverage-map-locate-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.coverage-map .coverage-map-locate-button svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.coverage-map-current-location {
+  display: grid;
+  place-items: center;
+}
+
+.coverage-map-current-location span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #2563eb;
+  box-shadow: 0 1px 7px rgba(29, 78, 216, 0.55);
+}
+
+.coverage-map-sidebar {
+  position: absolute;
+  z-index: 1000;
+  top: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+  width: min(382px, calc(100% - 36px));
+  padding: 27px 16px 16px;
+  border: 1px solid rgba(226, 235, 232, 0.95);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 14px 36px rgba(22, 49, 42, 0.16);
+  color: #162b27;
+}
+
+.coverage-map-sidebar__intro {
+  padding: 0 10px 18px;
+}
+
+.coverage-map-sidebar__eyebrow {
+  color: #07864e;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.coverage-map-sidebar h2 {
+  margin: 6px 0 8px;
+  color: #14252b;
+  font-size: 2.15rem;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.coverage-map-sidebar h2 em {
+  color: #647079;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.coverage-map-sidebar__intro p {
+  max-width: 300px;
+  margin: 0;
+  color: #6a777b;
+  font-size: 0.87rem;
+  line-height: 1.45;
+}
+
+.coverage-map-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 46px;
+  margin: 0 0 16px;
+  padding: 0 13px;
+  border: 1px solid #dfe7e5;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(18, 49, 42, 0.05);
+}
+
+.coverage-map-search:focus-within {
+  border-color: #11a361;
+  box-shadow: 0 0 0 3px rgba(17, 163, 97, 0.12);
+}
+
+.coverage-map-search__icon {
+  color: #26383a;
+  font-size: 1.75rem;
+  line-height: 1;
+  transform: rotate(-20deg);
+}
+
+.coverage-map-search input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  color: #253337;
+  font: inherit;
+  font-size: 0.82rem;
+}
+
+.coverage-map-search input::placeholder { color: #9aa5a7; }
+
+.coverage-map-filters {
+  display: grid;
+  grid-template-columns: 0.7fr 1.35fr 0.9fr;
+  gap: 4px;
+  margin: 0 0 15px;
+  padding: 4px;
+  border: 1px solid #e4ece9;
+  border-radius: 9px;
+  background: #f5f8f7;
+}
+
+.coverage-map-filters button {
+  min-height: 31px;
+  padding: 4px 7px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #728080;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.66rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.coverage-map-filters button:hover,
+.coverage-map-filters button.is-active {
+  background: #fff;
+  color: #07864e;
+  box-shadow: 0 2px 5px rgba(23, 67, 53, 0.1);
+}
+
+.coverage-map-sidebar__section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px 9px;
+  color: #26363a;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.coverage-map-sidebar__section-heading small {
+  color: #7a8889;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.coverage-map-area-list {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  border: 1px solid #edf1f0;
+  border-radius: 11px;
+  scrollbar-width: thin;
+}
+
+.coverage-map-area {
+  border-bottom: 1px solid #edf1f0;
+}
+
+.coverage-map-area:last-child { border-bottom: 0; }
+
+.coverage-map-area__button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  padding: 12px 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.coverage-map-area__button:hover,
+.coverage-map-area--selected .coverage-map-area__button { background: #f2faf6; }
+
+.coverage-map-area__pin {
+  display: grid;
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50% 50% 50% 0;
+  background: #0b9d5c;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1;
+  transform: rotate(-45deg);
+}
+
+.coverage-map-area__pin--reseller {
+  background: #2563eb;
+}
+
+.coverage-map-area__pin::first-letter { transform: rotate(45deg); }
+
+.coverage-map-area__copy {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 3px;
+}
+
+.coverage-map-area__copy strong {
+  overflow: hidden;
+  color: #1e2d31;
+  font-size: 0.88rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.coverage-map-area__copy small { color: #8b9798; font-size: 0.7rem; }
+
+.coverage-map-area__status {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #e6f7ed;
+  color: #07864e;
+  font-size: 0.62rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.coverage-map-area__status--reseller {
+  background: #eef0ff;
+  color: #2563eb;
+}
+
+.coverage-map-area__chevron {
+  color: #849092;
+  font-size: 1.35rem;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.coverage-map-area__chevron.is-open { transform: rotate(90deg); }
+
+.coverage-map-subareas {
+  padding: 0 14px 12px 52px;
+  background: #f8fcfa;
+}
+
+.coverage-map-subareas h3 {
+  margin: 0;
+  padding: 8px 0 4px;
+  color: #334447;
+  font-size: 0.7rem;
+}
+
+.coverage-map-subarea {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: #667678;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.74rem;
+  text-align: left;
+  border-radius: 6px;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.coverage-map-subarea:hover,
+.coverage-map-subarea:focus-visible {
+  background-color: #a4f9c7 !important;
+  color: #145c3c !important;
+}
+
+.coverage-map-subarea span {
+  display: grid;
+  width: 16px;
+  height: 16px;
+  place-items: center;
+  border-radius: 50%;
+  background: #0a9d5b;
+  color: #fff;
+  font-size: 0.63rem;
+  font-weight: 800;
+}
+
+.coverage-map-help {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: auto;
+  padding: 13px 13px 3px;
+  color: #42635a;
+}
+
+.coverage-map-help__bulb { color: #0aa565; font-size: 1.7rem; line-height: 1; }
+.coverage-map-help strong { display: block; color: #237c57; font-size: 0.78rem; }
+.coverage-map-help p { margin: 4px 0 0; color: #748b84; font-size: 0.7rem; line-height: 1.35; }
+.coverage-map-empty { padding: 20px; color: #718080; font-size: 0.8rem; }
 
 .coverage-map-status {
   display: grid;
@@ -85,26 +436,64 @@
 .coverage-map-marker {
   display: grid;
   place-items: center;
-  border-radius: 50%;
-  box-shadow: 0 2px 7px rgba(20, 28, 75, 0.35);
+  transition: transform 0.2s ease;
 }
 
-.coverage-map-marker span {
+.coverage-map-marker__pin {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50% 50% 50% 0;
+  box-shadow: 0 2px 7px rgba(20, 28, 75, 0.35);
+  transform: rotate(-45deg);
+}
+
+.coverage-map-marker--selected .coverage-map-marker__pin {
+  width: 34px;
+  height: 34px;
+  box-shadow: 0 0 0 5px rgba(10, 157, 91, 0.2), 0 3px 10px rgba(20, 80, 50, 0.35);
+}
+
+.coverage-map-marker__wifi {
+  display: grid;
+  width: 14px;
+  height: 14px;
+  place-items: center;
+  color: #fff;
+  transform: rotate(45deg);
+}
+
+.coverage-map-marker__wifi svg {
   display: block;
-  width: 6px;
-  height: 6px;
-  border: 2px solid #fff;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
 }
 
 .coverage-map-marker--business {
-  background: #2e358c;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+}
+
+.coverage-map-marker--business .coverage-map-marker__pin {
+  background: #0a9d5b;
+}
+
+.coverage-map-marker--selected {
+  background: transparent;
 }
 
 .coverage-map-marker--reseller {
-  background: #ef6936;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+}
+
+.coverage-map-marker--reseller .coverage-map-marker__pin {
+  background: #2563eb;
 }
 
 .coverage-map .leaflet-popup-content {
@@ -133,7 +522,7 @@
   gap: 9px;
   min-width: 160px;
   padding: 13px 15px;
-  border: 1px solid rgba(46, 53, 140, 0.1);
+  border: 1px solid rgba(10, 157, 91, 0.13);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.94);
   box-shadow: 0 7px 20px rgba(36, 48, 118, 0.14);
@@ -158,28 +547,60 @@
 }
 
 .coverage-map-legend__dot--business {
-  background: #2e358c;
+  background: #0a9d5b;
 }
 
 .coverage-map-legend__dot--reseller {
-  background: #ef6936;
+  background: #2563eb;
 }
 
 @media (max-width: 767px) {
   .business-coverage-section {
-    padding: 52px 14px 72px;
+    padding: 22px 10px 56px;
   }
 
   .coverage-map-shell {
-    min-height: 460px;
-    border-width: 5px;
+    display: grid;
+    grid-template-rows: auto minmax(500px, 1fr);
+    min-height: 0;
+    border-width: 1px;
     border-radius: 18px;
   }
 
   .coverage-map {
-    min-height: 450px;
-    height: 68vh;
+    grid-row: 2;
+    min-height: 0;
+    height: min(68vh, 620px);
   }
+
+  .coverage-map-sidebar {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    grid-row: 1;
+    width: auto;
+    min-height: 0;
+    max-height: none;
+    margin: 10px;
+    padding: 18px 10px 10px;
+  }
+
+  .coverage-map-area-list {
+    flex: 0 0 180px;
+    min-height: 180px;
+    max-height: 180px;
+  }
+
+  .coverage-map-sidebar__intro { padding-bottom: 12px; }
+  .coverage-map-sidebar h2 {
+    font-size: 1.75rem;
+    white-space: nowrap;
+  }
+  .coverage-map-sidebar__intro p { display: none; }
+  .coverage-map-help { display: none; }
+  .coverage-map-legend { bottom: 12px; }
 
   .coverage-map-legend {
     right: 10px;
@@ -187,5 +608,10 @@
     min-width: 145px;
     padding: 10px 12px;
     font-size: 0.72rem;
+  }
+
+  .coverage-map .leaflet-top.leaflet-left {
+    top: 10px;
+    right: 10px;
   }
 }
