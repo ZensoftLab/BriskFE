@@ -167,7 +167,6 @@ function applyPackageData(body, packageData, cardIdMap = {}) {
 
 function SitePage({ page }) {
   const [markup, setMarkup] = useState("");
-  const [headerMarkup, setHeaderMarkup] = useState("");
   const [footerMarkup, setFooterMarkup] = useState("");
   const [stylesReady, setStylesReady] = useState(false);
   const [packageData, setPackageData] = useState(null);
@@ -229,22 +228,6 @@ function SitePage({ page }) {
       style.textContent = sourceStyle.textContent;
       document.head.append(style);
     }
-
-    const toggleMobileMenu = (event) => {
-      const control = event.target.closest(
-        ".menu-mobile-nav-button, .mobile-nav-close, .ekommart-overlay",
-      );
-      if (control) {
-        event.preventDefault();
-        document.documentElement.classList.toggle("mobile-nav-active");
-        return;
-      }
-      const navLink = event.target.closest(".mobile-navigation a");
-      if (navLink) {
-        document.documentElement.classList.remove("mobile-nav-active");
-      }
-    };
-    document.addEventListener("click", toggleMobileMenu);
 
     const body = source.body;
     body.querySelectorAll("script, noscript").forEach((node) => node.remove());
@@ -365,34 +348,10 @@ function SitePage({ page }) {
         "text/html",
       );
       const sharedPage = sharedSource.querySelector("#page");
-      const sharedHeader = sharedPage?.querySelector(
-        '[data-elementor-type="header"]',
-      );
       const sharedFooter = sharedPage?.querySelector(
         '[data-elementor-type="footer"]',
       );
-      const sharedMobileNav = sharedSource.querySelector(
-        ".ekommart-mobile-nav",
-      );
-      const sharedOverlay = sharedSource.querySelector(".ekommart-overlay");
 
-      // The shared header comes from Main.html, whose Home link is marked as
-      // current in the source. Recalculate it for the page being visited.
-      updateActiveNavigation(sharedSource, currentPath);
-
-      // Move the shared layout sections out of the page template before the
-      // page content is rendered. Header owns the mobile navigation as well.
-      setHeaderMarkup(
-        normalizeSharedMarkup(
-          [
-            sharedHeader?.outerHTML,
-            sharedMobileNav?.outerHTML,
-            sharedOverlay?.outerHTML,
-          ]
-            .filter(Boolean)
-            .join("\n"),
-        ),
-      );
       setFooterMarkup(normalizeSharedMarkup(sharedFooter?.outerHTML || ""));
       pageHeader?.remove();
       pageFooter?.remove();
@@ -405,13 +364,11 @@ function SitePage({ page }) {
 
     return () => {
       cancelled = true;
-      document.removeEventListener("click", toggleMobileMenu);
       document.documentElement.classList.remove("mobile-nav-active");
       document
         .querySelectorAll(`[data-demo-style="${page}"]`)
         .forEach((node) => node.remove());
       document.body.className = "";
-      setHeaderMarkup("");
       setFooterMarkup("");
     };
   }, [page, packageData]);
@@ -697,7 +654,7 @@ function SitePage({ page }) {
 
   return (
     <>
-      <Header markup={headerMarkup} />
+      <Header />
       <div
         className={`demo-page demo-page-${page} ${stylesReady ? "is-styled" : "is-loading"}`}
         dangerouslySetInnerHTML={{ __html: markup }}

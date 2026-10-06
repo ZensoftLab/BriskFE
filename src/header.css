@@ -1,45 +1,329 @@
-.shared-header {
-  display: contents;
-}
-
-.shared-header .elementor-location-header {
+.brisk-header {
+  position: relative;
+  z-index: 1000;
   width: 100%;
+  background: #fff;
+  color: #111;
 }
 
-body.buisness-area-route .shared-header .elementor-element-31534f4,
-body.buisness-area-route .shared-header .elementor-element-31534f4 > .elementor-motion-effects-container,
-body.buisness-area-route .shared-header .elementor-element-31534f4 > .elementor-background-overlay {
-  background-color: #2e358c !important;
+.brisk-header-container {
+  width: min(calc(100% - 40px), 1140px);
+  margin: 0 auto;
 }
 
-body.buisness-area-route
-  .shared-header
-  .elementor-element-31534f4
-  .elementor-icon-list-item
-  a,
-body.buisness-area-route
-  .shared-header
-  .elementor-element-31534f4
-  .elementor-icon-list-text,
-body.buisness-area-route
-  .shared-header
-  .elementor-element-31534f4
-  .elementor-icon-list-icon i {
-  color: #fff !important;
+.brisk-topbar {
+  background: #2e358c;
+  color: #fff;
 }
 
-.shared-header .ekommart-overlay {
+.brisk-topbar-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  height: 40px;
+  min-height: 40px;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.brisk-contact-group {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.brisk-topbar-link,
+.brisk-tariff-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.brisk-topbar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brisk-contact-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.brisk-topbar-link:hover,
+.brisk-tariff-link:hover {
+  color: #f57f25;
+}
+
+.brisk-tariff-link {
+  justify-self: end;
+  background: transparent;
+  padding: 0;
+  font-weight: 600;
+}
+
+.brisk-mainbar {
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.brisk-mainbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  min-height: 80px;
+  gap: 24px;
+}
+
+.brisk-brand {
+  display: inline-flex;
+  flex: 0 0 160px;
+  align-items: center;
+  width: 160px;
+  height: 40px;
+  min-width: 160px;
+  color: #2e358c;
+  text-decoration: none;
+}
+
+.brisk-brand img {
   display: block;
+  width: 160px !important;
+  height: 40px !important;
+  max-width: 160px;
+  object-fit: contain;
 }
 
-.shared-header .menu-item-buisness-area > a {
+.brisk-desktop-nav {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  flex-wrap: nowrap;
+}
+
+.brisk-nav-link {
+  color: #222;
+  text-decoration: none;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.brisk-desktop-nav .brisk-nav-link {
+  padding: 12px 10px;
+  font-size: 15px;
+}
+
+.brisk-nav-link:hover,
+.brisk-nav-active {
+  color: #2e358c !important;
+  font-weight: 700;
+}
+
+.brisk-nav-featured {
   border-radius: 999px;
   background: #f57f25;
   color: #fff !important;
-  padding: 10px 16px;
-  transition: background-color 180ms ease;
+  padding: 10px 16px !important;
 }
 
-.shared-header .menu-item-buisness-area > a:hover {
+.brisk-nav-featured:hover {
   background: #d96612;
+  color: #fff !important;
+}
+
+.brisk-menu-toggle,
+.brisk-mobile-overlay,
+.brisk-mobile-panel {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .brisk-mainbar-content {
+    gap: 10px;
+  }
+
+  .brisk-desktop-nav {
+    gap: 0;
+  }
+
+  .brisk-desktop-nav .brisk-nav-link {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767px) {
+  .brisk-header-container {
+    width: min(calc(100% - 30px), 600px);
+  }
+
+  .brisk-topbar {
+    display: none;
+  }
+
+  .brisk-mainbar-content {
+    height: 80px;
+    min-height: 80px;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .brisk-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    background: transparent;
+    color: #2e358c;
+    cursor: pointer;
+    font-size: 25px;
+  }
+
+  .brisk-brand {
+    flex-basis: 160px;
+    min-width: 160px;
+  }
+
+  .brisk-desktop-nav {
+    display: none;
+  }
+
+  .brisk-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: block;
+    border: 0;
+    background: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+
+  .brisk-mobile-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1101;
+    display: block;
+    width: min(82vw, 320px);
+    height: 100vh;
+    overflow-y: auto;
+    background: #fff;
+    padding: 64px 20px 24px;
+    box-shadow: 4px 0 18px rgba(0, 0, 0, 0.16);
+  }
+
+  .brisk-mobile-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    border: 0;
+    background: transparent;
+    color: #2e358c;
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .brisk-mobile-panel nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brisk-mobile-link {
+    display: block;
+    border-bottom: 1px solid #eee;
+    padding: 14px 4px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .brisk-mobile-panel .brisk-nav-featured {
+    margin-top: 12px;
+    border: 0;
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .brisk-mainbar-content {
+    justify-content: space-between;
+  }
+
+  .brisk-brand {
+    order: 1;
+  }
+
+  .brisk-menu-toggle {
+    display: inline-flex;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .brisk-desktop-nav {
+    display: none;
+  }
+
+  .brisk-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: block;
+    border: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .brisk-mobile-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1101;
+    display: block;
+    width: min(82vw, 320px);
+    height: 100vh;
+    overflow-y: auto;
+    background: #fff;
+    padding: 64px 20px 24px;
+    box-shadow: 4px 0 18px rgba(0, 0, 0, 0.16);
+  }
+
+  .brisk-mobile-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    border: 0;
+    background: transparent;
+    color: #2e358c;
+    cursor: pointer;
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  .brisk-mobile-panel nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brisk-mobile-link {
+    display: block;
+    border-bottom: 1px solid #eee;
+    padding: 14px 4px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .brisk-mobile-panel .brisk-nav-featured {
+    margin-top: 12px;
+    border: 0;
+    padding: 12px 16px;
+  }
 }
